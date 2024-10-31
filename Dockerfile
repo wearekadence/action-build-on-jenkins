@@ -1,18 +1,15 @@
 # syntax=docker/dockerfile:1
 
-FROM golang:1.21 AS builder
+FROM golang:1.21-bookworm AS builder
 
-WORKDIR /app
+WORKDIR /go/src/app
+COPY . .
 
-COPY go.mod go.sum ./
 RUN go mod download
 
-COPY **/*.go ./
+RUN CGO_ENABLED=0 go build -ldflags="-w -s" -o /go/bin/app
 
-RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o /app/build-in-jenkins
+FROM golang:1.21-bookworm
 
-FROM scratch
-
-COPY --from=builder /app/build-in-jenkins /app/build-in-jenkins
-
-CMD ["/app/build-in-jenkins"]
+COPY --from=builder /go/bin/app /
+CMD ["/app"]
