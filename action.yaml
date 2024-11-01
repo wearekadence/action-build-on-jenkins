@@ -14,9 +14,9 @@ inputs:
   api_token:
     description: "Jenkins API token"
     required: false
-  # parameters:
-  #   description: 'Build parameters in JSON format e.g. `{"field1":"value1"}`'
-  #   required: false
+  parameters:
+    description: 'Build parameters in JSON format e.g. `{"field1":"value1"}`'
+    required: false
   # wait:
   #   description: "Should the runner wait for the build to finish and provide ok status"
   #   required: false

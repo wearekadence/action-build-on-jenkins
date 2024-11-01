@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"time"
 
@@ -34,7 +35,14 @@ func main() {
 		panic(err)
 	}
 
-	_, err = job.InvokeSimple(ctx, make(map[string]string))
+	var params map[string]string
+
+	err = json.Unmarshal([]byte(config.Parameters), &params)
+	if err != nil {
+		panic(fmt.Errorf("failed to parse parameters: %v", err))
+	}
+
+	_, err = job.InvokeSimple(ctx, params)
 	if err != nil {
 		fmt.Println("Failed to queue job")
 		panic(err)
