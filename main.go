@@ -20,6 +20,7 @@ func main() {
 	_, err := jenkins.Init(ctx)
 
 	if err != nil {
+		fmt.Printf("Error initializing Jenkins client: %v\n", err)
 		panic("Something Went Wrong")
 	}
 
