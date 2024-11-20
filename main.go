@@ -83,7 +83,12 @@ func main() {
 
 	fmt.Println(currentBuild.GetConsoleOutput(ctx))
 
-	fmt.Printf("Build number %d with result: %v\n", currentBuild.GetBuildNumber(), currentBuild.GetResult())
+	fmt.Printf(
+		"Build number %d with result: %v\nURL: %s",
+		currentBuild.GetBuildNumber(),
+		currentBuild.GetResult(),
+		currentBuild.GetUrl(),
+	)
 
 	if currentBuild.GetResult() != "SUCCESS" {
 		panic("Build failed")
