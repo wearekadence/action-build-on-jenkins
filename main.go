@@ -84,7 +84,7 @@ func main() {
 	fmt.Println(currentBuild.GetConsoleOutput(ctx))
 
 	fmt.Printf(
-		"Build number %d with result: %v\nURL: %s",
+		"Build number %d with result: %v\nURL: %s/pipeline-graph/",
 		currentBuild.GetBuildNumber(),
 		currentBuild.GetResult(),
 		currentBuild.GetUrl(),
