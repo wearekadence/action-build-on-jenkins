@@ -1,10 +1,10 @@
 module kadence.co/build-on-jenkins
 
-go 1.21.1
+go 1.25.0
 
 require (
 	github.com/bndr/gojenkins v1.1.0
 	github.com/caarlos0/env v3.5.0+incompatible
 )
 
-require golang.org/x/net v0.0.0-20200114155413-6afb5195e5aa // indirect
+require golang.org/x/net v0.55.0 // indirect
